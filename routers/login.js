@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const login = require("../controllers/login");
+const { verifyToken } = require("../middlewares/auth");
+const { isAdmin } = require("../middlewares/isAdmin");
 router.post("/signup", login.signup);
 router.post("/login", login.login);
+router.get("/subscription", verifyToken, isAdmin, login.getSubscription);
+router.post("/subscription", verifyToken, isAdmin, login.makeSubscription);
 module.exports = router;
