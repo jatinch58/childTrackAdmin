@@ -14,6 +14,7 @@ const parentSchema = new mongoose.Schema(
     children: [
       {
         type: String,
+        ref: "Child",
       },
     ],
     terms: {

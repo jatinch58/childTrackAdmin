@@ -1,7 +1,7 @@
 const parentdb = require("../models/parent");
 exports.getAllParents = async (req, res) => {
   try {
-    const allParents = await parentdb.find().populate("parentId");
+    const allParents = await parentdb.find().populate("children");
     if (allParents) {
       return res.status(200).json({ result: allParents });
     }
